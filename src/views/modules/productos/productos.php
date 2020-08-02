@@ -95,7 +95,7 @@ El Prducto fue Borrado correctamente del sistema.
         <div class="card-block">
             <?php if (isset($_GET['action'])): ?>
             <?php if ($_GET['action'] == 'productos' or $_GET['action'] == 'okProductos' or $_GET['action'] == 'okProdDelete' or $_GET['action'] == 'editarProd' or $_GET['action'] == 'editadoProd'): ?>
-             <i class="fa fa-list"></i>  <h1 class="alert alert-warning text-center">
+               <h1 class="alert alert-warning text-center">
              <i class="fa fa-list"></i>  Listado de Productos
             </h1>
             <table class="table table-bordered table-sm" id="tablas">
@@ -157,7 +157,6 @@ El Prducto fue Borrado correctamente del sistema.
         </div>
     </div>
 </div>
-<span class="text-danger">(*) <small>Es el Precio de Compra.</small></span>
 <?php endif?>
 <!-- Formulario de registro de los productos -->
 <!-- ========================================== -->

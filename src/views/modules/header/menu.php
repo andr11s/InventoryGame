@@ -40,7 +40,7 @@
             </li>
             <!-- user -->
             <li class="nav-item dropdown navbar-toggler-right active">
-                <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle animated bounceInDown" data-toggle="dropdown" href="config" id="navbarDropdownMenuLink">
+                <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="config" id="navbarDropdownMenuLink">
                     <span class="usu">
                         <i class="fa fa-user">
                         </i>

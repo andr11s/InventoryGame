@@ -1,9 +1,9 @@
 <nav class="navbar navbar-inverse bg-inverse">
-    <div class="container animated  bounceInRight">
+    <div class="container">
         <cite>
             Universidad Popular Del Cesar
             <?php echo date('Y') ?>-2 
             PROYECTO
-        </cite>
+        </cite> 
     </div>
 </nav>
