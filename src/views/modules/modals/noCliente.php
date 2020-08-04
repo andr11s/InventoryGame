@@ -9,7 +9,7 @@
               <div class="alert alert-info" role="alert">
                 <center><span class="text-warning"><?php echo ucwords($key['nombreCliente']) . ' ' . ucwords($key['apellidoCliente']) ?>:</span>
                 </center>
-                 <small><i class="text-danger">(Es el cliente al que le esta vendiendo.)</i></small>
+                 <small><i class="text-danger">(Es el cliente al que le esta vendiendo.)</i></small> 
               </div>
                 </h5>
             </div>
