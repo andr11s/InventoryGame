@@ -15,8 +15,8 @@ else if ($_SESSION['rol'] !== 'Administrador') {header('location:inicio');exit()
         <br/>
         <div class="row">
             <div class="col-lg-5">
-                <figure>
-                    <img height="300" src="views/bootstrap/img/logo_principal.jpg"/>
+                <figure class="img-log">
+                    <img width="560" height="auto" src="views/bootstrap/img/logo_principal.jpg">
                 </figure>
             </div>
             <?php $result = ProductosController::getInventarioController();?>

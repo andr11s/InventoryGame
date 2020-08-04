@@ -1,17 +1,4 @@
-<?php
-
-session_start();
-
-if (!$_SESSION["nombreAdmin"]) {
-
-    header("location:ingreso");
-
-    exit();
-
-}
-
-?>
-
+<?phpsession_start();if (!$_SESSION["nombreAdmin"]) {header("location:ingreso");exit();}?>
   <ol class="breadcrumb">
     <li class="breadcrumb-item active">Sección de Proveedores</li>
   </ol>
@@ -212,9 +199,7 @@ $a = ProveedoresController::getCiudadController()
     <?php endif?>
   <?php endif?>
  </div>
- </div>
-
-
+ </div> 
   <?php
 $agr = new ProveedoresController();
 $agr->agregarProveedorController();

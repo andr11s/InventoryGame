@@ -2725,10 +2725,10 @@ a.btn.disabled, fieldset[disabled] a.btn {
 }
 
 .btn-outline-primary {
-    color: #0275d8;
+    color: #FE2E2E;
     background-image: none;
     background-color: transparent;
-    border-color: #0275d8;
+    border-color: #FE2E2E;
 }
 
 .btn-outline-primary:hover {
@@ -4505,7 +4505,7 @@ tbody.collapse.show {
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
     list-style: none;
-    background-color: #eceeef;
+    background-color: #a53131;
     border-radius: 0.25rem;
 }
 
@@ -4536,7 +4536,7 @@ tbody.collapse.show {
 }
 
 .breadcrumb-item.active {
-    color: #636c72;
+    color: #FFFFFF;
 }
 
 .pagination {
@@ -4971,8 +4971,8 @@ a.badge:focus, a.badge:hover {
 .list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #0275d8;
-    border-color: #0275d8;
+    background-color: #2E2EFE;
+    border-color: #FE2E2E;
 }
 
 .list-group-item.active .list-group-item-heading, .list-group-item.active .list-group-item-heading>small, .list-group-item.active .list-group-item-heading>.small {
@@ -5861,7 +5861,7 @@ a.bg-danger:focus, a.bg-danger:hover {
 }
 
 .bg-inverse {
-    background-color: #292b2c !important;
+    background-color: #a53131  !important;
 }
 
 a.bg-inverse:focus, a.bg-inverse:hover {

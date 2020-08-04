@@ -44,7 +44,7 @@ class ProveedoresController
                 'telefonoProveedor' => $_POST['telefonoProveedor'],
                 'direccionProveedor' => $_POST['direccionProveedor'],
                 'idCiudad' => $_POST['idCiudad']);
-
+ 
             $respuesta = ProveedoresModel::agregarProveedorModel($datosController, 'proveedores');
 
             if ($respuesta == 'success') {

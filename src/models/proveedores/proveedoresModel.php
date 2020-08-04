@@ -41,13 +41,6 @@ class ProveedoresModel
 
     public static function agregarProveedorModel($datosModel, $tabla)
     {
-        if(!self::ValidarCaracteres($datosModel['nombreProveedor']) or !self::ValidarCaracteres($datosModel['apellidoProveedor'])
-        or !self::ValidarCaracteresAlfanume($datosModel['nombreEmpresa'])
-            or !self::ValidarEnterosRango($datosModel['telefonoProveedor']) or
-            !self::ValidarCaracteresragnoDir($datosModel['direccionProveedor']) or
-            !self::ValidarEnterosRango1($datosModel['idCiudad'])) {
-            return 'error';
-        }else{
         $sql = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProveedor,apellidoProveedor,nombreEmpresa,telefonoProveedor,direccionProveedor,
             idCiudad)VALUES (:nombreProveedor,:apellidoProveedor,:nombreEmpresa,:telefonoProveedor,:direccionProveedor,
             :idCiudad)");
@@ -64,7 +57,7 @@ class ProveedoresModel
             } else {
                 return 'error';
             }
-        }
+        
     }
     public static function ValidarEnterosRango1($datos){
         $flag = true;

@@ -30,21 +30,14 @@ class ProductosModel
     }
 
     public static function registroProductoModel($datosModel, $tabla)
-    {
-
-        if(!self::ValidarCaracteres($datosModel['nombreProducto']) or !self::ValidarEnteros($datosModel['idProveedor']) or
-            !self::ValidarPrecios($datosModel['precioProducto']) or !self::ValidarEnteros($datosModel['idCategoria'])) {
-                return 'ErrorValidar';
-        } else {
-            $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreProducto,idProveedor,precioProducto,idCategoria,urlmimg)
-            VALUES(:nombreProducto,:idProveedor,:precioProducto,:idCategoria,:imagen)");
+    { 
+            $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreProducto,idProveedor,precioProducto,idCategoria)
+            VALUES(:nombreProducto,:idProveedor,:precioProducto,:idCategoria)");
 
             $sql->bindParam(':nombreProducto', $datosModel['nombreProducto']);
             $sql->bindParam(':idProveedor', $datosModel['idProveedor']);
             $sql->bindParam(':precioProducto', $datosModel['precioProducto']);
             $sql->bindParam(':idCategoria', $datosModel['idCategoria']);
-            $sql->bindParam(':imagen', $datosModel['imagen']);
-
 
             if ($sql->execute()) {
 // aqui agrega al inventario con el correspondiente idProducto para su relacion
@@ -63,7 +56,7 @@ class ProductosModel
             }
 
             $sql->close();
-        }
+       
     }
     //////
     //  INVENTARIO.
@@ -111,7 +104,7 @@ class ProductosModel
         $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta
         JOIN proveedores prov ON ta.idProveedor=prov.idProveedor
         JOIN categorias cat ON ta.idCategoria=cat.idCategoria
-        WHERE idProducto = :idProducto");
+        WHERE idProducto = :idProducto"); 
         $sql->bindParam(":idProducto", $datosModel);
         $sql->execute();
 

@@ -17,10 +17,7 @@ class categoriasModel
     }
 
     public static function agregarCategoriasModel($datosModel, $tabla)
-    {
-        if(!self::ValidarCaracteres($datosModel['nombreCategoria'])) {
-            return 'Error';
-        }else{
+    { 
             $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreCategoria)VALUES(:nombreCategoria)");
             $sql->bindParam(':nombreCategoria', $datosModel['nombreCategoria']);
 
@@ -28,9 +25,7 @@ class categoriasModel
                 return 'success';
             }else{
                 return 'Error';
-            }
-
-        }
+            } 
     }
 
     public static function ValidarCaracteres($datos){
