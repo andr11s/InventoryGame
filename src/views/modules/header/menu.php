@@ -6,26 +6,26 @@
         </span>
     </button>
     <a class="navbar-brand" href="inicio">
-        Sistema
+        Game Dev
     </a>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="categorias" id="cate">
-                    Categorías
+                <a class="nav-link" href="proveedores" id="cate">
+                    Proveedores
                     <span class="sr-only">
                         (current)
                     </span>
                 </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="productos">
-                    Productos
+                <a class="nav-link" href="categorias">
+                    Categorías
                 </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="proveedores">
-                    Proveedores
+                <a class="nav-link" href="productos">
+                    Productos
                 </a>
             </li>
              <li class="nav-item active">
@@ -40,7 +40,7 @@
             </li>
             <!-- user -->
             <li class="nav-item dropdown navbar-toggler-right active">
-                <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle animated bounceInDown" data-toggle="dropdown" href="config" id="navbarDropdownMenuLink">
+                <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="config" id="navbarDropdownMenuLink">
                     <span class="usu">
                         <i class="fa fa-user">
                         </i>

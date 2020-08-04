@@ -13,16 +13,11 @@ class ProductosController
 
     public function registroProductosController()
     {
-
         if (isset($_POST['agragarpro'])) {
-
             $datosController = array('nombreProducto' => $_POST['nombreProducto'],
                 'idProveedor' => $_POST['idProveedor'],
                 'precioProducto' => $_POST['precioProducto'],
-                'idCategoria' => $_POST['idCategoria'],
-                'imagen' => $_POST['imagen']
-
-
+                'idCategoria' => $_POST['idCategoria']
             );
 
             $respuesta = ProductosModel::registroProductoModel($datosController, 'productos');

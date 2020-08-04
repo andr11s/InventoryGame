@@ -11,6 +11,18 @@ body {
     width: 80% !important;
 }
 
+.img-log{
+    
+        width: 96%;
+        max-width: 960px;
+        margin: 0 auto;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    }
+
 .head {
     font-family: Monaco, Courier New, Courier, monospace;
     overflow-x: hidden;

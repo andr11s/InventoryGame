@@ -7,7 +7,7 @@ if (!isset($_SESSION['nombreAdmin'])) {
 }
 require 'views/modules/modals/verClientesNoActivos.php';?>
 <ol class="breadcrumb">
-  <li class="breadcrumb-item active animated fadeInRight">Listado de Usuarios del Sistema</li>
+  <li class="breadcrumb-item active">Listado de Usuarios del Sistema</li>
 </ol>
 <!-- <button class="btn btn-outline-success" data-target="#ingresar" data-toggle="modal" type="button">
     Agragar nuevo Usuario
