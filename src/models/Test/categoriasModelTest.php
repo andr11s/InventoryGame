@@ -10,9 +10,8 @@ Final class categoriasModelTest extends PHPUnit\Framework\TestCase
     /**
      * @dataProvider CasosdeRegistrarCategorias
      */
-    public function testAgregarCategoriasModel($datos)
-    {
-        $this->expectOutputString('success');
+    public function testAgregarCategoriasModel($datos){
+        $this->expectOutputString("success");
         echo categoriasModel::agregarCategoriasModel($datos,"categorias");
     }
 
@@ -20,9 +19,7 @@ Final class categoriasModelTest extends PHPUnit\Framework\TestCase
 
     public function CasosdeRegistrarCategorias() {
         return [
-            [["nombreCategoria"=>"carnes"]],
-            [["nombreCategoria"=>NULL]]
-
-        ];
+            [["nombreCategoria"=>"accion"]],
+            [["nombreCategoria"=>"-1"]]];
     }
 }

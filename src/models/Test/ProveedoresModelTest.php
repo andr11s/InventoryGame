@@ -14,25 +14,13 @@ final class ProveedoresModelTest extends  PHPUnit\Framework\TestCase
         $this->expectOutputString('success');
         echo ProveedoresModel::agregarProveedorModel($datos,"proveedores");
     }
-
-
-
-
-
     public function CasosdeRegistrarProveedores() {
         return [
-            [["nombreProveedor"=>"pedro","apellidoProveedor"=>"perez","nombreEmpresa"=>"carnes del Cesar12",
-                "telefonoProveedor"=>5812648,"direccionProveedor"=>"carrera 15 calle 13","idCiudad"=>1]],
+            [["nombreProveedor"=>"jariun","apellidoProveedor"=>"diaz","nombreEmpresa"=>"sony warnig",
+                "telefonoProveedor"=>5434567,"direccionProveedor"=>"aavenida 9 calle 23","idCiudad"=>1]],
 
-
-
-
-
-
-            [["nombreProveedor"=>"afafaf","apellidoProveedor"=>"afafaf","nombreEmpresa"=>"cesar  1www",
-                "telefonoProveedor"=>NULL,"direccionProveedor"=>"carrera 23 calle","idCiudad"=>"fafa"]]
-
-
+            [["nombreProveedor"=>null,"apellidoProveedor"=>null,"nombreEmpresa"=>null,
+                "telefonoProveedor"=>NULL,"direccionProveedor"=>"carrera 23 calle","idCiudad"=>null]]
         ];
     }
 }
