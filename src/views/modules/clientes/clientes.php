@@ -140,7 +140,7 @@ $cli = ClientesController::getClientesController();
                             <h6 class="alert alert-warning text-center">
                                <i class="fa fa-edit"></i> Agregar Clientes
                             </h6>
-                            <form method="post" onsubmit="return validarclientes()">
+                            <form method="post" onsubmit="return validarclientes()"> 
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">

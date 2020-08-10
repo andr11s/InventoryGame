@@ -165,7 +165,7 @@ El Prducto fue Borrado correctamente del sistema.
     <h1 class="alert alert-warning text-center">
         Agregar Productos
     </h1>
-    <form method="post">
+    <form method="post" >
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group" id="form">
@@ -194,13 +194,15 @@ $b->getProveedoresSelectController();
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group" id="formprecio">
                     <label for="nombreCategorias">
-                        Precio Productos ($ 2.50 )
+                        Precio Productos ($ Pesos )
                     </label>
-                    <input type="text" class="form-control" id="precioCategorias" placeholder="precio del Producto"
+                    <input type="text" class="form-control" id="precioProducto" placeholder="precio del Producto"
                         name="precioProducto" required="" />
                 </div>
+                <span id="Alertprecio">
+                </span>
             </div>
             <div class="col-md-6">
                 <div class="form-group">

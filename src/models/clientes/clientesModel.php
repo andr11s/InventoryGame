@@ -1,7 +1,7 @@
 <?php
 
 // require_once 'models/conexion.php';
-
+//include_once  '../ValidaUnit.php';
 class ClientesModel
 {
 
@@ -48,7 +48,16 @@ class ClientesModel
     }
 
     public static function registrarClientesModel($datosModel, $tabla)
-    { 
+    {
+
+        if(!ValidaUnit::ValidarCaracteres($datosModel['nombreCliente'])  or !ValidaUnit::ValidarCaracteres($datosModel['apellidoCliente']) or
+            !ValidaUnit::ValidarEnteros($datosModel['idProvincia']) or !ValidaUnit::ValidarCaracteresAlfanume($datosModel['usuarioCliente']) or
+            !ValidaUnit::ValidarCaracteresAlfanume($datosModel['passwordCliente']) or !ValidaUnit::ValidarEnterosRango($datosModel['telefono']) or
+            !ValidaUnit::ValidarCaracteresragnoDir($datosModel['emailCliente']) or !ValidaUnit::ValidarCaracteresragnoDir($datosModel['direccion']) or
+            !ValidaUnit::ValidarEnteros($datosModel['idCiudad']) or !ValidaUnit::ValidarEnterosRango1($datosModel['cuit'])) {
+
+            return 'Error';
+        } else {
             $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreCliente,apellidoCliente,idProvincia,usuarioCliente,passwordCliente,telefono,emailCliente,direccion,idCiudad,cuit)
             VALUES(:nombreCliente,:apellidoCliente,:idProvincia,:usuarioCliente,:passwordCliente,:telefono,:emailCliente,:direccion,:idCiudad,:cuit)");
             $sql->bindParam(":nombreCliente", $datosModel['nombreCliente']);
@@ -68,9 +77,10 @@ class ClientesModel
                 return "Error";
             }
 
-        
+        }
 
     }
+
 
 
     public static function editClientesModel($datosModel, $tabla)

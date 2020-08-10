@@ -41,23 +41,30 @@ class ProveedoresModel
 
     public static function agregarProveedorModel($datosModel, $tabla)
     {
-        $sql = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProveedor,apellidoProveedor,nombreEmpresa,telefonoProveedor,direccionProveedor,
+        if(!self::ValidarCaracteres($datosModel['nombreProveedor']) or !self::ValidarCaracteres($datosModel['apellidoProveedor'])
+            or !self::ValidarCaracteresAlfanume($datosModel['nombreEmpresa'])
+            or !self::ValidarEnterosRango($datosModel['telefonoProveedor']) or
+            !self::ValidarCaracteresragnoDir($datosModel['direccionProveedor']) or
+            !self::ValidarEnterosRango1($datosModel['idCiudad'])) {
+            return 'Error';
+        }else{
+            $sql = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProveedor,apellidoProveedor,nombreEmpresa,telefonoProveedor,direccionProveedor,
             idCiudad)VALUES (:nombreProveedor,:apellidoProveedor,:nombreEmpresa,:telefonoProveedor,:direccionProveedor,
             :idCiudad)");
 
-        $sql->bindParam(':nombreProveedor', $datosModel['nombreProveedor']);
-        $sql->bindParam(':apellidoProveedor', $datosModel['apellidoProveedor']);
-        $sql->bindParam(':nombreEmpresa', $datosModel['nombreEmpresa']);
-        $sql->bindParam(':telefonoProveedor', $datosModel['telefonoProveedor']);
-        $sql->bindParam(':direccionProveedor', $datosModel['direccionProveedor']);
-        $sql->bindParam(':idCiudad', $datosModel['idCiudad']);
+            $sql->bindParam(':nombreProveedor', $datosModel['nombreProveedor']);
+            $sql->bindParam(':apellidoProveedor', $datosModel['apellidoProveedor']);
+            $sql->bindParam(':nombreEmpresa', $datosModel['nombreEmpresa']);
+            $sql->bindParam(':telefonoProveedor', $datosModel['telefonoProveedor']);
+            $sql->bindParam(':direccionProveedor', $datosModel['direccionProveedor']);
+            $sql->bindParam(':idCiudad', $datosModel['idCiudad']);
 
             if ($sql->execute()) {
                 return 'success';
             } else {
                 return 'error';
             }
-        
+        }
     }
     public static function ValidarEnterosRango1($datos){
         $flag = true;

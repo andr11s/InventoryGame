@@ -84,7 +84,7 @@ class ImpresionSuscriptores
 
 <tr>
             <td width="200px"></td>
-            <td style="width:140px"><img src="images/logsin.png"></td>
+            <td style="width:140px"><img src="images/logo_principal.jpg"></td> 
             <td width="200px"></td>
         </tr>
         </table>

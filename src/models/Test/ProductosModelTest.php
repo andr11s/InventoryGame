@@ -15,20 +15,10 @@ final class ProductosModelTest extends PHPUnit\Framework\TestCase
         echo ProductosModel::registroProductoModel($datos,"productos");
 
     }
-
-
-
     public function CasosdeRegistrarProductos() {
         return [
-            [["nombreProducto"=>"carnes",
-                "idProveedor"=>123,
-                "precioProducto"=>23000,
-                "idCategoria"=>02]],
+            [["nombreProducto"=>"fall guys", "idProveedor"=>19, "precioProducto"=>231000, "idCategoria"=>14]],
 
-
-            [["nombreProducto"=>"caerrs",
-                "idProveedor"=>1232,
-                "precioProducto"=>22330,
-                "idCategoria"=>NULL]]];
+            [["nombreProducto"=>"-1", "idProveedor"=>12322, "precioProducto"=>23511, "idCategoria"=>NULL]]];
     }
 }

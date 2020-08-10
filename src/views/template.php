@@ -9,15 +9,15 @@
         <div class="container-fluid">
             <section>
                 <hr>
-                    <?php
+                <?php
                         $mvc = new MvcController();
                         $mvc->enlacesPaginasController();
-                        ?>  
-            </section> 
+                        ?>
+            </section>
         </div>
-    </div> 
-</div> 
-    <script src="views/bootstrap/js/app.js"></script>
-    <script src="views/bootstrap/js/validarUsuario.js"></script>
-    <script src="views/bootstrap/js/claseMenu.js"></script>
-
+    </div>
+</div>
+<script src="views/bootstrap/js/app.js"></script>
+<script src="views/bootstrap/js/validarUsuario.js"></script>
+<script src="views/bootstrap/js/validaciones.js"></script>
+<script src="views/bootstrap/js/claseMenu.js"></script>
