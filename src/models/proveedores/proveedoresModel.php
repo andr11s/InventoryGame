@@ -19,9 +19,7 @@ class ProveedoresModel
 
     public static function getCiudadModel($tabla)
     {
-        $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta JOIN
-                                           provincia prov ON ta.idProvincia = prov.idProvincia
-                                            ");
+        $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta JOIN  provincia prov ON ta.idProvincia = prov.idProvincia");
         $sql->execute();
 
         return $sql->fetchAll();
@@ -40,17 +38,17 @@ class ProveedoresModel
     }
 
     public static function agregarProveedorModel($datosModel, $tabla)
-    {
-        $sql = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProveedor,apellidoProveedor,nombreEmpresa,telefonoProveedor,direccionProveedor,
+    { 
+            $sql = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProveedor,apellidoProveedor,nombreEmpresa,telefonoProveedor,direccionProveedor,
             idCiudad)VALUES (:nombreProveedor,:apellidoProveedor,:nombreEmpresa,:telefonoProveedor,:direccionProveedor,
             :idCiudad)");
 
-        $sql->bindParam(':nombreProveedor', $datosModel['nombreProveedor']);
-        $sql->bindParam(':apellidoProveedor', $datosModel['apellidoProveedor']);
-        $sql->bindParam(':nombreEmpresa', $datosModel['nombreEmpresa']);
-        $sql->bindParam(':telefonoProveedor', $datosModel['telefonoProveedor']);
-        $sql->bindParam(':direccionProveedor', $datosModel['direccionProveedor']);
-        $sql->bindParam(':idCiudad', $datosModel['idCiudad']);
+            $sql->bindParam(':nombreProveedor', $datosModel['nombreProveedor']);
+            $sql->bindParam(':apellidoProveedor', $datosModel['apellidoProveedor']);
+            $sql->bindParam(':nombreEmpresa', $datosModel['nombreEmpresa']);
+            $sql->bindParam(':telefonoProveedor', $datosModel['telefonoProveedor']);
+            $sql->bindParam(':direccionProveedor', $datosModel['direccionProveedor']);
+            $sql->bindParam(':idCiudad', $datosModel['idCiudad']);
 
             if ($sql->execute()) {
                 return 'success';

@@ -30,7 +30,8 @@ class ProductosModel
     }
 
     public static function registroProductoModel($datosModel, $tabla)
-    { 
+    {
+ 
             $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreProducto,idProveedor,precioProducto,idCategoria)
             VALUES(:nombreProducto,:idProveedor,:precioProducto,:idCategoria)");
 
@@ -38,6 +39,8 @@ class ProductosModel
             $sql->bindParam(':idProveedor', $datosModel['idProveedor']);
             $sql->bindParam(':precioProducto', $datosModel['precioProducto']);
             $sql->bindParam(':idCategoria', $datosModel['idCategoria']);
+
+
 
             if ($sql->execute()) {
 // aqui agrega al inventario con el correspondiente idProducto para su relacion
@@ -56,7 +59,7 @@ class ProductosModel
             }
 
             $sql->close();
-       
+        
     }
     //////
     //  INVENTARIO.

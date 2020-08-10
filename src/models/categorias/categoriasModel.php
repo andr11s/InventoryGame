@@ -17,21 +17,22 @@ class categoriasModel
     }
 
     public static function agregarCategoriasModel($datosModel, $tabla)
-    { 
+    {  
             $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreCategoria)VALUES(:nombreCategoria)");
             $sql->bindParam(':nombreCategoria', $datosModel['nombreCategoria']);
 
             if ($sql->execute()) {
-                return 'success';
+                return "success";
             }else{
-                return 'Error';
-            } 
+
+                echo json_encode(strlen("aqeError"));
+                return "Error";
+            }  
     }
 
     public static function ValidarCaracteres($datos){
         $flag = true;
         if(strlen($datos)<4 or strlen($datos)>20 or is_numeric($datos)){
-            echo json_encode($datos);
             $flag = false;
         }
         return $flag;

@@ -23,95 +23,96 @@ class VentasModel
     }
 
     public static function registroFacturaModel($datosModel, $tabla)
-    {
-
-        $sql = Conexion::conectar()->prepare("INSERT INTO   $tabla(idProducto,idCliente,precioVenta,cantidad,iva,totalVenta,numFac,fechaVenta,unidad,tipoFactura)VALUES
+    { 
+          
+            $sql = Conexion::conectar()->prepare("INSERT INTO   $tabla(idProducto,idCliente,precioVenta,cantidad,iva,totalVenta,numFac,fechaVenta,unidad,tipoFactura)VALUES
                 (:idProducto,:idCliente,:precioVenta,:cantidad,:iva,:totalVenta,:numFac,:fechaVenta,:unidad,:tipoFactura) ");
 
-        $sql->bindParam(':idProducto', $datosModel['idProducto']);
-        $sql->bindParam(':idCliente', $datosModel['idCliente']);
-        $sql->bindParam(':precioVenta', $datosModel['precioVenta']);
-        $sql->bindParam(':cantidad', $datosModel['cantidad']);
-        $sql->bindParam(':iva', $datosModel['iva']);
-        $sql->bindParam(':totalVenta', $datosModel['totalVenta']);
-        $sql->bindParam(':numFac', $datosModel['numFac']);
-        $sql->bindParam(':fechaVenta', $datosModel['fechaVenta']);
-        $sql->bindParam(':unidad', $datosModel['unidad']);
-        $sql->bindParam(':tipoFactura', $datosModel['tipoFactura']);
+            $sql->bindParam(':idProducto', $datosModel['idProducto']);
+            $sql->bindParam(':idCliente', $datosModel['idCliente']);
+            $sql->bindParam(':precioVenta', $datosModel['precioVenta']);
+            $sql->bindParam(':cantidad', $datosModel['cantidad']);
+            $sql->bindParam(':iva', $datosModel['iva']);
+            $sql->bindParam(':totalVenta', $datosModel['totalVenta']);
+            $sql->bindParam(':numFac', $datosModel['numFac']);
+            $sql->bindParam(':fechaVenta', $datosModel['fechaVenta']);
+            $sql->bindParam(':unidad', $datosModel['unidad']);
+            $sql->bindParam(':tipoFactura', $datosModel['tipoFactura']);
 
+            $sql->execute();
+            //
+            // verifica el stock
+            $idProducto = $datosModel['idProducto'];
+            $stock = Conexion::conectar()->prepare("SELECT * FROM inventario WHERE idProducto = $idProducto");
+            $stock->execute();
+            $resultado = $stock->fetchAll();
 
-        $idProducto = $datosModel['idProducto'];
-        $stock = Conexion::conectar()->prepare("SELECT * FROM inventario
-            WHERE idProducto = $idProducto");
-        $stock->execute();
-        $resultado = $stock->fetchAll();
-        foreach ($resultado as $key) {
+            foreach ($resultado as $key) {
+                if ($key['cantidadIngresada'] < $datosModel['unidad']) {
+                    return 'NoExisteProducto';
 
-            if ($key['cantidadIngresada'] < $datosModel['unidad']) {
-                return 'no';
+                }
+            }
+
+            // revisa que sea el mismo cliente
+            //
+            //
+            $cedu = Conexion::conectar()->prepare('SELECT idCliente FROM temp ');
+            $cedu->execute();
+            $resu = $cedu->fetch();
+
+            if ($resu == ' ') {
+                // actualiza el inventario
+                //
+                $unidad = $datosModel['unidad'];
+                $idProducto = $datosModel['idProducto'];
+                $sql1 = Conexion::conectar()->prepare("UPDATE inventario SET cantidadIngresada = cantidadIngresada - $unidad  WHERE idProducto = $idProducto");
+                $sql1->execute();
+
+                if ($sql->execute()) {
+                    return 'success';
+                }
+            }
+            // revisa que sea el mismo cliente
+            //
+            //
+            $cedulaSql = Conexion::conectar()->prepare('SELECT idCliente FROM temp
+            WHERE idCliente = :idCliente ');
+            $cedulaSql->execute(array(':idCliente' => $datosModel['idCliente'],
+            ));
+            ///echo json_encode($datosModel);
+            $res = $cedulaSql->fetch();
+            if (!$res) {
+                return 'ErrorNoExisteCliente';
 
             }
-        }
-
-        // revisa que sea el mismo cliente
-        //
-        //
-        $cedu = Conexion::conectar()->prepare('SELECT idCliente FROM temp ');
-        $cedu->execute();
-        $resu = $cedu->fetch();
-
-        if ($resu == '') {
-            // actualiza el inventario
+            // revisa que sea el mismo tipo de factura
             //
+            //
+            $cedulaSql = Conexion::conectar()->prepare('SELECT tipoFactura FROM temp
+            WHERE tipoFactura=:tipoFactura');
+            $cedulaSql->execute(array(':tipoFactura' => $datosModel['tipoFactura']));
+            $res = $cedulaSql->fetch();
+
+            if (!$res) {
+                return 'ErrorNoExisteFacturaTipo';
+
+            }
+
+            // // actualiza el inventario
+            // //
             $unidad = $datosModel['unidad'];
             $idProducto = $datosModel['idProducto'];
-            $sql1 = Conexion::conectar()->prepare("UPDATE inventario SET cantidadIngresada = cantidadIngresada - $unidad  WHERE idProducto = $idProducto");
-            $sql1->execute();
 
-            if ($sql->execute()) {
+            $sql1 = Conexion::conectar()->prepare("UPDATE inventario SET cantidadIngresada = cantidadIngresada - $unidad  WHERE idProducto = $idProducto");
+
+
+            if ($sql1->execute()) {
                 return 'success';
             }
-        }
-        // revisa que sea el mismo cliente
-        //
-        //
-        $cedulaSql = Conexion::conectar()->prepare('SELECT idCliente FROM temp
-            WHERE idCliente = :idCliente ');
-        $cedulaSql->execute(array(':idCliente' => $datosModel['idCliente'],
-        ));
-        $res = $cedulaSql->fetch();
 
-        if (!$res) {
-            return 'noCliente';
-
-        }
-        // revisa que sea el mismo tipo de factura
-        //
-        //
-        $cedulaSql = Conexion::conectar()->prepare('SELECT tipoFactura FROM temp
-            WHERE tipoFactura=:tipoFactura');
-        $cedulaSql->execute(array(':tipoFactura' => $datosModel['tipoFactura']));
-        $res = $cedulaSql->fetch();
-
-        if (!$res) {
-            return 'noFacturaTipo';
-
-        }
-
-        // // actualiza el inventario
-        // //
-        $unidad = $datosModel['unidad'];
-        $idProducto = $datosModel['idProducto'];
-
-        $sql1 = Conexion::conectar()->prepare("UPDATE inventario SET cantidadIngresada = cantidadIngresada - $unidad  WHERE idProducto = $idProducto");
-        $sql1->execute();
-
-        if ($sql->execute()) {
-            return 'success';
-        }
-
-        $sql->close();
-        //}////fin del if de validacion
+            $sql->close();
+       
     }
 
 

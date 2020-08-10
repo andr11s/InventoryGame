@@ -1,7 +1,7 @@
 <?php
 
 // require_once 'models/conexion.php';
-
+//include_once  '../ValidaUnit.php';
 class ClientesModel
 {
 
@@ -48,7 +48,8 @@ class ClientesModel
     }
 
     public static function registrarClientesModel($datosModel, $tabla)
-    { 
+    {
+ 
             $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreCliente,apellidoCliente,idProvincia,usuarioCliente,passwordCliente,telefono,emailCliente,direccion,idCiudad,cuit)
             VALUES(:nombreCliente,:apellidoCliente,:idProvincia,:usuarioCliente,:passwordCliente,:telefono,:emailCliente,:direccion,:idCiudad,:cuit)");
             $sql->bindParam(":nombreCliente", $datosModel['nombreCliente']);
@@ -66,11 +67,9 @@ class ClientesModel
                 return 'success';
             }else{
                 return "Error";
-            }
-
-        
-
+            } 
     }
+
 
 
     public static function editClientesModel($datosModel, $tabla)

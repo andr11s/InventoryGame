@@ -54,7 +54,7 @@ class Ajax
     {
         $datos = $this->validarProducto;
 
-        $respuesta = ProductosController::validarProductoController($datos);
+        $respuesta = ProductosController::validarProductoController($datos); 
         echo $respuesta;
     }
 
