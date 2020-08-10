@@ -31,11 +31,7 @@ class ProductosModel
 
     public static function registroProductoModel($datosModel, $tabla)
     {
-
-        if(!self::ValidarCaracteres($datosModel['nombreProducto']) or !self::ValidarEnteros($datosModel['idProveedor']) or
-            !self::ValidarPrecios($datosModel['precioProducto']) or !self::ValidarEnteros($datosModel['idCategoria'])) {
-            return 'Error';
-        } else {
+ 
             $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreProducto,idProveedor,precioProducto,idCategoria)
             VALUES(:nombreProducto,:idProveedor,:precioProducto,:idCategoria)");
 
@@ -63,7 +59,7 @@ class ProductosModel
             }
 
             $sql->close();
-        }
+        
     }
     //////
     //  INVENTARIO.

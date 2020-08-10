@@ -23,16 +23,8 @@ class VentasModel
     }
 
     public static function registroFacturaModel($datosModel, $tabla)
-    {
-        if( !self::ValidarIdentificacion($datosModel['idProducto']) or  !self::ValidarIdentificacion($datosModel['idCliente'])
-            or !self::ValidarCantidadess($datosModel['precioVenta'])  or !self::ValidarCantidadess($datosModel['cantidad'])
-            or !self::ValidarCantidadess($datosModel['iva']) or !self::ValidarCantidadess($datosModel['totalVenta'])
-            or !self::ValidarCantidadess($datosModel['numFac']) or !self::ValidarCantidadess($datosModel['unidad'])
-            or !self::ValidarCadenas($datosModel['tipoFactura'])){
-
-            return 'Error';
-        }else{
-
+    { 
+          
             $sql = Conexion::conectar()->prepare("INSERT INTO   $tabla(idProducto,idCliente,precioVenta,cantidad,iva,totalVenta,numFac,fechaVenta,unidad,tipoFactura)VALUES
                 (:idProducto,:idCliente,:precioVenta,:cantidad,:iva,:totalVenta,:numFac,:fechaVenta,:unidad,:tipoFactura) ");
 
@@ -120,7 +112,7 @@ class VentasModel
             }
 
             $sql->close();
-        }
+       
     }
 
 
