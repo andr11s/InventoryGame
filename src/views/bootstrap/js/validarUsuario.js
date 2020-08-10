@@ -1,7 +1,7 @@
 // valida los el registro de usuarios nuevos
 // 
 var usuarioExistente = false;
-$("#nombreAdmin").change(function() {
+$("#nombreAdmin").change(function () {
     var usuario = $('#nombreAdmin').val();
     // console.log(usuario);
     var datos = new FormData();
@@ -13,7 +13,7 @@ $("#nombreAdmin").change(function() {
         cache: false,
         contentType: false,
         processData: false,
-        success: function(respuesta) {
+        success: function (respuesta) {
             if (respuesta == 1) {
                 $("#validar").html('<p  class="alert alert-danger">Este Usuario ya Existe</p>');
                 $('#validar').addClass('a');
@@ -41,7 +41,7 @@ $("#nombreAdmin").change(function() {
 // 
 // 
 var usuarioExistente = false;
-$("#nombreCategorias").change(function() {
+$("#nombreCategorias").change(function () {
     var categorias = $('#nombreCategorias').val();
     console.log(categorias);
     var datos = new FormData();
@@ -53,7 +53,7 @@ $("#nombreCategorias").change(function() {
         cache: false,
         contentType: false,
         processData: false,
-        success: function(respuesta) {
+        success: function (respuesta) {
             if (respuesta == 1) {
                 $("#cat").html('<p  class="alert alert-danger">Esta Categoría ya Existe</p>');
                 $('#cat').addClass('a');
@@ -105,38 +105,47 @@ function validarRegistro() {
 // ===================================================================
 // 
 var usuarioExistente = false;
-$("#nombreEmpresa").change(function() {
-    var proveedor = $('#nombreEmpresa').val();
-    console.log(proveedor);
-    var datos = new FormData();
-    datos.append('inputvalidarProveedor', proveedor);
-    $.ajax({
-        url: 'views/ajax.php',
-        method: "POST",
-        data: datos,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function(respuesta) {
-            if (respuesta == 1) {
-                $("#prove").html('<p  class="alert alert-danger">Esta Empresa ya Existe</p>');
-                $('#prove').addClass('a');
-                $("#form").addClass('has-danger');
-                $("#nombreEmpresa").addClass('form-control form-control-danger');
-                $("#button").attr('disabled', 'disabled');
-                usuarioExistente = true;
-            } else {
-                $("#form").removeClass('has-danger');
-                $("#form").addClass('has-success');
-                $("#nombreEmpresa").removeClass('form-control form-control-danger');
-                $("#nombreEmpresa").addClass('form-control form-control-success');
-                $('#nombreEmpresa').css('border', 'solid 1px #8FF48A');
-                $("#prove").html('');
-                $("#button").removeAttr('disabled', 'disabled');
-                usuarioExistente = false;
+$("#nombreEmpresa").change(function () {
+    let proveedor = $('#nombreEmpresa').val();
+
+    if (proveedor.length > 3) {
+        let datos = new FormData();
+        datos.append('inputvalidarProveedor', proveedor);
+        $.ajax({
+            url: 'views/ajax.php',
+            method: "POST",
+            data: datos,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (respuesta) {
+                if (respuesta == 1) {
+                    $("#prove").html('<p  class="alert alert-danger">Esta Empresa ya Existe</p>');
+                    $('#prove').addClass('a');
+                    $("#form").addClass('has-danger');
+                    $("#nombreEmpresa").addClass('form-control form-control-danger');
+                    $("#button").attr('disabled', 'disabled');
+                    usuarioExistente = true;
+                } else {
+                    $("#form").removeClass('has-danger');
+                    $("#form").addClass('has-success');
+                    $("#nombreEmpresa").removeClass('form-control form-control-danger');
+                    $("#nombreEmpresa").addClass('form-control form-control-success');
+                    $('#nombreEmpresa').css('border', 'solid 1px #8FF48A');
+                    $("#prove").html('');
+                    $("#button").removeAttr('disabled', 'disabled');
+                    usuarioExistente = false;
+                }
             }
-        }
-    })
+        })
+    } else {
+        $("#prove").html('<p  class="alert alert-danger">Debe tener maximo 3 caracteres</p>');
+        $('#prove').addClass('a');
+        $("#form").addClass('has-danger');
+        $("#nombreEmpresa").addClass('form-control form-control-danger');
+        $("#button").attr('disabled', 'disabled');
+        usuarioExistente = true;
+    }
 });
 // ===================================================================
 // 
@@ -144,40 +153,47 @@ $("#nombreEmpresa").change(function() {
 // ===================================================================
 // 
 var usuarioExistente = false;
-$("#nombreProductos").change(function() {
+$("#nombreProductos").change(function () {
     var producto = $('#nombreProductos').val();
     // console.log(producto);
-    var datos = new FormData();
-    datos.append('inputvalidarProducto', producto);
-    console.log(producto);
-    $.ajax({
-        url: 'views/ajax.php',
-        method: "POST",
-        data: datos,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function(respuesta) {
-            if (respuesta == 1) {
-                $("#pro").html('<p  class="alert alert-danger">El producto ya existe</p>');
-                $('#pro').addClass('a');
-                $("#form").addClass('has-danger');
-                $("#nombreProductos").addClass('form-control form-control-danger');
-                $("#button").attr('disabled', 'disabled');
-                usuarioExistente = true;
-            } else {
-                $("#form").removeClass('has-danger');
-                $("#form").addClass('has-success');
-                $("#nombreProductos").removeClass('form-control form-control-danger');
-                $("#nombreProductos").addClass('form-control form-control-success');
-                $('#nombreProductos').css('border', 'solid 1px #8FF48A');
-                $("#pro").html('');
-                console.log(respuesta);
-                $("#button").removeAttr('disabled', 'disabled');
-                usuarioExistente = false;
+    if (producto.length > 4) {
+        var datos = new FormData();
+        datos.append('inputvalidarProducto', producto);
+        $.ajax({
+            url: 'views/ajax.php',
+            method: "POST",
+            data: datos,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (respuesta) {
+                if (respuesta == 1) {
+                    $("#pro").html('<p  class="alert alert-danger">El producto ya existe</p>');
+                    $('#pro').addClass('a');
+                    $("#form").addClass('has-danger');
+                    $("#nombreProductos").addClass('form-control form-control-danger');
+                    $("#button").attr('disabled', 'disabled');
+                    usuarioExistente = true;
+                } else {
+                    $("#form").removeClass('has-danger');
+                    $("#form").addClass('has-success');
+                    $("#nombreProductos").removeClass('form-control form-control-danger');
+                    $("#nombreProductos").addClass('form-control form-control-success');
+                    $('#nombreProductos').css('border', 'solid 1px #8FF48A');
+                    $("#pro").html('');
+                    $("#button").removeAttr('disabled', 'disabled');
+                    usuarioExistente = false;
+                }
             }
-        }
-    })
+        })
+    } else {
+        $("#pro").html('<p  class="alert alert-danger">El nombre del producto es corto</p>');
+        $('#pro').addClass('a');
+        $("#form").addClass('has-danger');
+        $("#nombreProductos").addClass('form-control form-control-danger');
+        $("#button").attr('disabled', 'disabled');
+    }
+
 });
 // ===================================================================
 // 
@@ -186,7 +202,7 @@ $("#nombreProductos").change(function() {
 // 
 // 
 var clienteExistente = false;
-$("#clientes").change(function() {
+$("#clientes").change(function () {
     var cliente = $('#clientes').val();
     var datos = new FormData();
     datos.append('inputvalidarCliente', cliente);
@@ -197,7 +213,7 @@ $("#clientes").change(function() {
         cache: false,
         contentType: false,
         processData: false,
-        success: function(respuesta) {
+        success: function (respuesta) {
             if (respuesta == 1) {
                 $("#cli").html('<p  class="alert alert-danger">Este cliente ya Existe</p>');
                 $('#cli').addClass('a');

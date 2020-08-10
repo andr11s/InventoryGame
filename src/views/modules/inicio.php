@@ -9,10 +9,10 @@ else if ($_SESSION['rol'] !== 'Administrador') {header('location:inicio');exit()
     <div class="mains">
         <div class="card bg-primary text-white">
             <div class="card-block">
-                Esta sección es exclusiva para  el Administrador del sistema.
+                Esta sección es exclusiva para el Administrador del sistema.
             </div>
         </div>
-        <br/>
+        <br />
         <div class="row">
             <div class="col-lg-5">
                 <figure class="img-log">
@@ -33,17 +33,17 @@ else if ($_SESSION['rol'] !== 'Administrador') {header('location:inicio');exit()
                         <div class="alert alert-info text-gray-dark" align="center ">
                             <?php echo date('d-m-Y H:i') ?>
                         </div>
-                        <div class="card card-block">
-                            <?php foreach ($result as $key): ?>
-                            <?php if ($key['cantidadIngresada'] < 10): ?>
-                            <div class="alert alert-danger">
-                                <h5>
-                                    <strong>
-                                        <?php echo 'Quedan ' . $key['cantidadIngresada'] . ' unidades de ' . $key['nombreProducto']; ?>
-                                    </strong>
-                                </h5>
-                            </div>
+
+                        <?php foreach ($result as $key): ?>
+                        <?php if ($key['cantidadIngresada'] < 10): ?>
+                        <div class="alert alert-danger">
+                            <h5>
+                                <strong>
+                                    <?php echo 'Quedan ' . $key['cantidadIngresada'] . ' unidades de ' . $key['nombreProducto']; ?>
+                                </strong>
+                            </h5>
                         </div>
+
                         <?php endif?>
                         <?php endforeach?>
                     </div>
@@ -55,6 +55,6 @@ else if ($_SESSION['rol'] !== 'Administrador') {header('location:inicio');exit()
 $admin->
     fecha();
 ?>
-</br>
-</div>
+    </br>
+    </div>
 </body>

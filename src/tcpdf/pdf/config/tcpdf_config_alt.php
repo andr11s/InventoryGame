@@ -69,12 +69,12 @@ define('K_PATH_IMAGES', dirname(__FILE__) . '/../images/');
  * Deafult image logo used be the default Header() method.
  * Please set here your own logo or an empty string to disable it.
  */
-define('PDF_HEADER_LOGO', 'logsin.png');
+define('PDF_HEADER_LOGO', 'logo_principal.jpg');
 
 /**
  * Header logo image width in user units.
  */
-define('PDF_HEADER_LOGO_WIDTH', 50);
+define('PDF_HEADER_LOGO_WIDTH', 55);
 
 /**
  * Cache directory for temporary files (full path).
@@ -117,7 +117,7 @@ define('PDF_HEADER_TITLE', ' Nro Factura:');
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 $dia = date('d-m-Y');
 $iva = '11-1432687-2';
-define('PDF_HEADER_STRING', " Incar s.r.l - www.diegopennisi.es \n Fecha: $dia  \n Hora : $iva \n \n");
+define('PDF_HEADER_STRING', " GameDex - www.GameDev.es \n Fecha: $dia  \n Hora : $iva \n \n");
 
 /**
  * Document unit of measure [pt=point, mm=millimeter, cm=centimeter, in=inch].

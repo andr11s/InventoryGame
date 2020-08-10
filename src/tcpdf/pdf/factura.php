@@ -38,7 +38,7 @@ class ImprimirVentas
         foreach ($result as $resultado) {
             $fecha = $resultado['fechaVenta'];
             $fechas = date('d-m-Y', strtotime($fecha));
-            define('PDF_HEADER_STRINGT', " Incar s.r.l - www.diegopennisi.es \n Fecha: $fechas  \n Iva Habilitado : $iva \n");
+            define('PDF_HEADER_STRINGT', " Game - www.GameDev.es \n Fecha: $fechas  \n Iva Habilitado : $iva \n");
 // set default header data
             $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . '  ' . $numFac, PDF_HEADER_STRINGT, array(5, 64, 255), array(9, 64, 128));
             $pdf->setFooterData(array(0, 64, 0), array(0, 64, 128));
